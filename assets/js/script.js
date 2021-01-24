@@ -92,6 +92,23 @@ function searchFunction() {
             $(forecastTitle).addClass("forecastTitle");
             forecastContainerEl.appendChild(forecastTitle);
 
+            // Forecast Loop
+            for (i = 0; i < 5; i++) {
+                // Date
+                var dayContainer = document.querySelector('#day_' + i);
+                var forecastDate = document.createElement("p");
+                forecastDate.innerHTML = moment().add(i, 'days').format('dddd');
+                $(forecastDate).addClass("forecastDate");
+                dayContainer.appendChild(forecastDate);
+
+            }
+
+
+
+
+
+
+
             // Day 1
 
             // Day 1 - Date
