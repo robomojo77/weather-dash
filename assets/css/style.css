@@ -10,3 +10,18 @@ header {
 p {
     color: black;
 }
+
+.uvLow {
+    background-color: green;
+}
+
+.uvMod {
+    background-color: yellow;
+}
+
+.uvHi {
+    background-color: red;
+}
+
+
+
