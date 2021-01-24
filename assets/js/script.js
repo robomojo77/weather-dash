@@ -60,7 +60,7 @@ function searchFunction() {
                 currentCityLat +
                 '&lon=' +
                 currentCityLon +
-                '&exclude=current,minutely,hourly,alerts&appid=a49467f838c4b2f44e490a0eaf64a7dc'
+                '&exclude=current,minutely,hourly,alerts&units=imperial&appid=a49467f838c4b2f44e490a0eaf64a7dc'
             );
         })
 
@@ -94,12 +94,38 @@ function searchFunction() {
 
             // Forecast Loop
             for (i = 0; i < 5; i++) {
-                // Date
+                
+                // Day Container
+
                 var dayContainer = document.querySelector('#day_' + i);
+                
+                // Date
+                
                 var forecastDate = document.createElement("p");
                 forecastDate.innerHTML = moment().add(i, 'days').format('dddd');
                 $(forecastDate).addClass("forecastDate");
                 dayContainer.appendChild(forecastDate);
+
+                // Condition
+
+                var forecastCondition = document.createElement("p");
+                forecastCondition.innerHTML = data.daily[i].weather[0].main;
+                $(forecastCondition).addClass("forecastCondition");
+                dayContainer.appendChild(forecastCondition);
+
+                // Temp
+
+                var forecastTemp = document.createElement("p");
+                forecastTemp.innerHTML = "Temp: " + data.daily[i].temp.max;
+                $(forecastTemp).addClass("forecastTemp");
+                dayContainer.appendChild(forecastTemp);
+
+                // Humidity
+
+                var forecastHumidity = document.createElement("p");
+                forecastHumidity.innerHTML = "Humidity: " + data.daily[i].humidity;
+                $(forecastHumidity).addClass("forecastHumidity");
+                dayContainer.appendChild(forecastHumidity);
 
             }
 
