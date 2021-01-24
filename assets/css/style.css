@@ -1,5 +1,9 @@
 /* Header Styles */
 
+* {
+    padding: 5px;
+}
+
 header {
     color: white;
     background-color: black;
@@ -7,8 +11,29 @@ header {
     padding: 10px;
 }
 
-p {
-    color: black;
+.searchContainer {
+    display: flex;
+}
+
+.currentContainer {
+    display: flex;
+}
+
+.forecastContainer {
+    display: flex;
+}
+
+.forecastTitle {
+    display: block;
+}
+
+.day {
+    margin: 5px;
+    background-color: royalblue;
+}
+
+.forecastDate {
+    font-weight: bold;
 }
 
 .uvLow {

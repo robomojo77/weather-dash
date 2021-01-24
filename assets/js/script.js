@@ -85,8 +85,12 @@ function searchFunction() {
 
             // 5 Day Forecast
             // Forecast Title
-            
-            var forecastContainerEl = document.querySelector('#forecastContainer')
+
+            var forecastContainerEl = document.querySelector('#forecastTitleDiv');
+
+            // Clear Container
+            forecastContainerEl.innerHTML = '';
+
             var forecastTitle = document.createElement("h3");
             forecastTitle.innerHTML = "5 Day Forecast";
             $(forecastTitle).addClass("forecastTitle");
@@ -94,38 +98,41 @@ function searchFunction() {
 
             // Forecast Loop
             for (i = 0; i < 5; i++) {
-                
+
                 // Day Container
 
-                var dayContainer = document.querySelector('#day_' + i);
-                
+                var dayContainerEl = document.querySelector('#day_' + i);
+
+                // Clear Container
+                dayContainerEl.innerHTML = '';
+
                 // Date
-                
+
                 var forecastDate = document.createElement("p");
                 forecastDate.innerHTML = moment().add(i, 'days').format('dddd');
                 $(forecastDate).addClass("forecastDate");
-                dayContainer.appendChild(forecastDate);
+                dayContainerEl.appendChild(forecastDate);
 
                 // Condition
 
                 var forecastCondition = document.createElement("p");
                 forecastCondition.innerHTML = data.daily[i].weather[0].main;
                 $(forecastCondition).addClass("forecastCondition");
-                dayContainer.appendChild(forecastCondition);
+                dayContainerEl.appendChild(forecastCondition);
 
                 // Temp
 
                 var forecastTemp = document.createElement("p");
                 forecastTemp.innerHTML = "Temp: " + data.daily[i].temp.max;
                 $(forecastTemp).addClass("forecastTemp");
-                dayContainer.appendChild(forecastTemp);
+                dayContainerEl.appendChild(forecastTemp);
 
                 // Humidity
 
                 var forecastHumidity = document.createElement("p");
                 forecastHumidity.innerHTML = "Humidity: " + data.daily[i].humidity;
                 $(forecastHumidity).addClass("forecastHumidity");
-                dayContainer.appendChild(forecastHumidity);
+                dayContainerEl.appendChild(forecastHumidity);
 
             }
 
