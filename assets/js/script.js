@@ -1,13 +1,15 @@
 // Search Function
 
-searchFunction() {
+function searchFunction() {
     // Search Variable
     
     var searchHolder = document.querySelector('#searchInput').value;
 
 // fetch
 fetch(
-    ''
+    'https://api.openweathermap.org/data/2.5/weather?q=' +
+     searchHolder + 
+     '&appid=a49467f838c4b2f44e490a0eaf64a7dc'
 )
 
 .then(function(response) {
@@ -15,15 +17,20 @@ fetch(
 })
 
 .then(function(response) {
-    console.log(response.data[0]);
+    console.log(response.name);
+
+// Current Weather Container
 
     var currentContainerEl = document.querySelector('#currentContainer');
 
     currentContainerEl.innerHTML = '';
-    var currentTemp = document.createElement('h3');
-    currentTemp.setAttribute('innerHtml', "Current Tempererature" + response. );
-    currentContainerEl.appendChild(currentTemp);
+    var currentCityName = document.createElement("p");
+    currentCityName.innerHTML = "Current City: " + response.name;
+    currentContainerEl.appendChild(currentCityName);
+    var currentCityDate = document.createElement("p");
+    currentCityDate.innerHTML = moment().format('dddd, MMMM Do YYYY');
+    currentContainerEl.appendChild(currentCityDate);
     
-})
+});
 
 }
