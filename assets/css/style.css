@@ -15,8 +15,20 @@ header {
     display: flex;
 }
 
+.searchBox {
+    margin: 5px;
+    background-color: gray;
+}
+
 .currentContainer {
+    border: black;
+    border-width: 3px;
+    border-style: solid;
     display: flex;
+}
+
+.currentCityName {
+    font-weight: bold;
 }
 
 .forecastContainer {
@@ -28,6 +40,7 @@ header {
 }
 
 .day {
+    border-radius: 10px;
     margin: 5px;
     background-color: royalblue;
 }

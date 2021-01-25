@@ -1,3 +1,41 @@
+function loadSearches () {
+    // Oldest Search
+
+    var oldestSearch = localStorage.getItem("oldestSave");
+    if (oldestSearch != undefined) {
+        var searchContainerEl = document.querySelector('#searchHistory')
+        var oldestSearchBox = document.createElement("button");
+        oldestSearchBox.innerHTML = oldestSearch;
+        $(oldestSearchBox).addClass("searchBox");
+        searchContainerEl.appendChild(oldestSearchBox);
+    }
+
+    // Old Search
+
+    var oldSearch = localStorage.getItem("oldSave");
+    if (oldSearch != undefined) {
+        var searchContainerEl = document.querySelector('#searchHistory')
+        var oldSearchBox = document.createElement("button");
+        oldSearchBox.innerHTML = oldSearch;
+        $(oldSearchBox).addClass("searchBox");
+        searchContainerEl.appendChild(oldSearchBox);
+    }
+
+    // Last Search
+
+    var lastSearch = localStorage.getItem("lastSave");
+    if (lastSearch != undefined) {
+        var searchContainerEl = document.querySelector('#searchHistory')
+        var lastSearchBox = document.createElement("button");
+        lastSearchBox.innerHTML = lastSearch;
+        $(lastSearchBox).addClass("searchBox");
+        searchContainerEl.appendChild(lastSearchBox);
+    }
+
+}
+
+loadSearches();
+
 // Search Function
 
 function searchFunction() {
@@ -29,6 +67,7 @@ function searchFunction() {
             // City Name and Date
             var currentCityName = document.createElement("p");
             currentCityName.innerHTML = "Current City: " + response.name;
+            $(currentCityName).addClass("currentCityName");
             currentContainerEl.appendChild(currentCityName);
             var currentCityDate = document.createElement("p");
             currentCityDate.innerHTML = moment().format('dddd, MMMM Do YYYY');
@@ -115,8 +154,8 @@ function searchFunction() {
 
                 // Condition
 
-                var forecastCondition = document.createElement("p");
-                forecastCondition.innerHTML = data.daily[i].weather[0].main;
+                var forecastCondition = document.createElement("img");
+                forecastCondition.setAttribute('src', "http://openweathermap.org/img/wn/" + data.daily[i].weather[0].icon + "@2x.png");
                 $(forecastCondition).addClass("forecastCondition");
                 dayContainerEl.appendChild(forecastCondition);
 
@@ -136,51 +175,28 @@ function searchFunction() {
 
             }
 
-
-
-
-
-
-
-            // Day 1
-
-            // Day 1 - Date
-
-            var day1Date
-
-            // Day 1 - Condition
-
-            var day1Condition
-
-            // Day 1 - Temp
-
-            var day1Temp
-
-            // Day 1 - Humidity
-
-            var day1Humidity
-
-            // Day 2
-            // Day 2 - Date
-            // Day 2 - Condition
-            // Day 2 - Temp
-            // Day 2 - Humidity
-            // Day 3
-            // Day 3 - Date
-            // Day 3 - Condition
-            // Day 3 - Temp
-            // Day 3 - Humidity
-            // Day 4
-            // Day 4 - Date
-            // Day 4 - Condition
-            // Day 4 - Temp
-            // Day 4 - Humidity
-            // Day 5
-            // Day 5 - Date
-            // Day 5 - Condition
-            // Day 5 - Temp
-            // Day 5 - Humidity
-
+        })
+        .then(function () {
+            var oldSaveTest = localStorage.getItem("oldSave");
+            if (oldSaveTest != undefined) {             
+                localStorage.setItem("oldestSave", oldSaveTest);
+            }
+            var lastSaveTest = localStorage.getItem("lastSave");
+            if (lastSaveTest != undefined) {
+                localStorage.setItem("oldSave", lastSaveTest);
+            }
+            localStorage.setItem("lastSave", searchHolder);
         });
 
+        
+
 }
+
+// Search Button Listener
+
+$(document).on('click', '.searchBox', function () {
+    var searchText = this.innerHTML;
+    var searchInputEl = document.querySelector('#searchInput');
+    searchInputEl.value = searchText;
+    searchFunction();
+})
