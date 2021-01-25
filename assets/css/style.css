@@ -11,6 +11,8 @@ header {
     padding: 10px;
 }
 
+/* Search Styles */
+
 .searchContainer {
     display: flex;
 }
@@ -19,6 +21,8 @@ header {
     margin: 5px;
     background-color: gray;
 }
+
+/* Current Weather Styles */
 
 .currentContainer {
     border: black;
@@ -30,6 +34,20 @@ header {
 .currentCityName {
     font-weight: bold;
 }
+
+.uvLow {
+    background-color: green;
+}
+
+.uvMod {
+    background-color: yellow;
+}
+
+.uvHi {
+    background-color: red;
+}
+
+/* Forecast Weather Styles */
 
 .forecastContainer {
     display: flex;
@@ -49,17 +67,6 @@ header {
     font-weight: bold;
 }
 
-.uvLow {
-    background-color: green;
-}
-
-.uvMod {
-    background-color: yellow;
-}
-
-.uvHi {
-    background-color: red;
-}
 
 
 
